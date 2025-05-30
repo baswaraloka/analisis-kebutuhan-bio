@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Survei Teks Biografi</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Form Survei Pembelajaran Teks Biografi</h1>
+    <form id="biografiForm" name="biografiForm" class="space-y-6">
+
+      <!-- 1. Nama Lengkap -->
+      <div>
+        <label class="block font-semibold mb-1">Nama Lengkap</label>
+        <input type="text" name="nama" class="w-full border p-2 rounded" required>
+      </div>
+
+      <!-- 2. Kelas -->
+      <div>
+        <label class="block font-semibold mb-1">Kelas</label>
+        <input type="text" name="kelas" class="w-full border p-2 rounded" required>
+      </div>
+
+      <!-- 3. Sekolah -->
+      <div>
+        <label class="block font-semibold mb-1">Sekolah</label>
+        <input type="text" name="sekolah" class="w-full border p-2 rounded" required>
+      </div>
+
+      <!-- 4. Suka membaca? -->
+      <div>
+        <label class="block font-semibold mb-1">1. Apakah kalian suka membaca, terutama teks biografi?</label>
+        <select name="suka_membaca" class="w-full border p-2 rounded">
+          <option value="1">1 - Tidak Suka</option>
+          <option value="2">2</option>
+          <option value="3">3 - Biasa Saja</option>
+          <option value="4">4</option>
+          <option value="5">5 - Sangat Suka</option>
+        </select>
+        <textarea name="alasan_membaca" rows="3" class="w-full border p-2 mt-2 rounded" placeholder="Mengapa demikian?"></textarea>
+      </div>
+
+      <!-- 5. Tertarik materi teks biografi -->
+      <div>
+        <label class="block font-semibold mb-1">2. Apakah kalian tertarik dengan materi teks biografi dalam pembelajaran Bahasa Indonesia?</label>
+        <textarea name="tertarik_materi" rows="3" class="w-full border p-2 rounded" placeholder="Berikan alasan kalian!"></textarea>
+      </div>
+
+      <!-- 6. Media yang digunakan guru -->
+      <div>
+        <label class="block font-semibold mb-1">3. Media apa saja yang digunakan guru dalam pembelajaran materi teks biografi?</label>
+        <textarea name="media_guru" rows="3" class="w-full border p-2 rounded"></textarea>
+      </div>
+
+      <!-- 7. Apakah media tersebut membantu -->
+      <div>
+        <label class="block font-semibold mb-1">4. Apakah media tersebut membantu kalian memahami materi teks biografi dengan baik?</label>
+        <textarea name="media_membantu" rows="3" class="w-full border p-2 rounded" placeholder="Mengapa demikian?"></textarea>
+      </div>
+
+      <!-- 8. Seberapa sering cari info -->
+      <div>
+        <label class="block font-semibold mb-1">5. Seberapa sering kalian mencari atau membaca informasi terkait materi teks biografi di internet?</label>
+        <select name="sering_mencari" class="w-full border p-2 rounded">
+          <option value="1">1 - Jarang</option>
+          <option value="2">2</option>
+          <option value="3">3 - Kadang-kadang</option>
+          <option value="4">4</option>
+          <option value="5">5 - Sangat Sering</option>
+        </select>
+        <textarea name="alasan_mencari" rows="3" class="w-full border p-2 mt-2 rounded" placeholder="Berikan alasannya!"></textarea>
+      </div>
+
+      <!-- 9. Faktor kenyamanan belajar di internet -->
+      <div>
+        <label class="block font-semibold mb-2">6. Apa saja faktor yang membuat kalian nyaman dan lebih mudah memahami materi pelajaran di internet? (boleh pilih lebih dari satu)</label>
+        <div class="grid grid-cols-2 gap-2">
+          <label><input type="checkbox" name="faktor[]" value="Tampilan desain situs yang menarik"> Tampilan desain situs yang menarik</label>
+          <label><input type="checkbox" name="faktor[]" value="Kecepatan akses"> Kecepatan akses</label>
+          <label><input type="checkbox" name="faktor[]" value="Bahasa yang mudah dipahami"> Bahasa yang mudah dipahami</label>
+          <label><input type="checkbox" name="faktor[]" value="Adanya gambar atau ilustrasi"> Adanya gambar atau ilustrasi</label>
+          <label><input type="checkbox" name="faktor[]" value="Materi disajikan secara jelas dan ringkas"> Materi disajikan secara jelas dan ringkas</label>
+          <label><input type="checkbox" name="faktor[]" value="Materi disusun dalam sebuah jalur pembelajaran"> Materi disusun dalam jalur pembelajaran</label>
+          <label><input type="checkbox" name="faktor[]" value="Bebas memilih bagian yang ingin diakses"> Bebas memilih bagian</label>
+          <label><input type="checkbox" name="faktor[]" value="Tersedia latihan soal atau kuis interaktif"> Latihan soal atau kuis</label>
+          <label><input type="checkbox" name="faktor[]" value="Tersedia forum diskusi"> Forum diskusi</label>
+        </div>
+        <div class="mt-2">
+          <input type="text" name="faktor_lainnya" placeholder="Lainnya..." class="w-full border p-2 rounded">
+        </div>
+      </div>
+
+      <!-- 10. Ketertarikan pada media berupa situs web -->
+      <div>
+        <label class="block font-semibold mb-1">7. Apakah kalian tertarik apabila ada media pembelajaran materi teks biografi berupa situs web?</label>
+        <textarea name="pendapat_web" rows="3" class="w-full border p-2 rounded" placeholder="Bagaimana pendapat kalian?"></textarea>
+      </div>
+
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Kirim</button>
+    </form>
+    <p id="status" class="mt-4 text-green-600 hidden">Jawaban berhasil dikirim!</p>
+  </div>
+
+  <script>
+    const form = document.getElementById("biografiForm");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_URL", {
+        method: "POST",
+        body: data
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset();
+          status.classList.remove("hidden");
+          status.textContent = "Jawaban berhasil dikirim!";
+        } else {
+          status.classList.remove("hidden");
+          status.classList.add("text-red-600");
+          status.textContent = "Gagal mengirim. Silakan coba lagi.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
